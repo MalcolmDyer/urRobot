@@ -21,7 +21,7 @@ CHECK_RELEASE = YES
 # Set this when you only want to compile this application
 #   for a subset of the cross-compiled target architectures
 #   that Base is built for.
-#CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc32
+CROSS_COMPILER_TARGET_ARCHS = 
 
 # To install files into a location other than $(TOP) define
 #   INSTALL_LOCATION here.
@@ -32,10 +32,16 @@ CHECK_RELEASE = YES
 #   a Microsoft FTP server say, or on some NFS configurations.
 #IOCS_APPL_TOP = </IOC's/absolute/path/to/install/top>
 
+ifdef T_A
+PKG_ARCH=$(T_A)
+endif
+
 WITH_BOOST = YES
 
+PACKAGE_SITE_TOP ?= /cds/group/pcds/pkg_mgr
+
 BOOST_PACKAGE_NAME=boost
-BOOST_VERSION=1.64.0
-BOOST_TOP=$(PSPKG_ROOT)/release/$(BOOST_PACKAGE_NAME)/$(BOOST_VERSION)
-BOOST_LIB=$(BOOST_TOP)/$(EPICS_HOST_ARCH)/lib
-BOOST_INCLUDE=$(BOOST_TOP)/$(EPICS_HOST_ARCH)/include
+BOOST_VERSION=1.77.0
+BOOST_TOP=$(PACKAGE_SITE_TOP)/release/$(BOOST_PACKAGE_NAME)/$(BOOST_VERSION)
+BOOST_LIB=$(BOOST_TOP)/$(PKG_ARCH)/lib
+BOOST_INCLUDE=$(BOOST_TOP)/$(PKG_ARCH)/include
