@@ -27,6 +27,10 @@ CROSS_COMPILER_TARGET_ARCHS =
 #   INSTALL_LOCATION here.
 #INSTALL_LOCATION=</absolute/path/to/install/top>
 
+# To build the IOC application set BUILD_IOCS to YES
+# Otherwise set it to NO
+BUILD_IOCS=NO
+
 # Set this when the IOC and build host use different paths
 #   to the install location. This may be needed to boot from
 #   a Microsoft FTP server say, or on some NFS configurations.
