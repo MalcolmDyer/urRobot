@@ -866,6 +866,7 @@ record(ao, "$(P)Control:PoseRollTweakVal")
     field(EGU, "deg")
     field(PREC, 4)
     field(DRVL, "0.0")
+    field(VAL, "10.0")
 }
 record(bo, "$(P)Control:PoseRollTweakFwd")
 {
@@ -910,6 +911,7 @@ record(ao, "$(P)Control:PosePitchTweakVal")
     field(EGU, "deg")
     field(PREC, 4)
     field(DRVL, "0.0")
+    field(VAL, "10.0")
 }
 record(bo, "$(P)Control:PosePitchTweakFwd")
 {
@@ -954,6 +956,7 @@ record(ao, "$(P)Control:PoseYawTweakVal")
     field(EGU, "deg")
     field(PREC, 4)
     field(DRVL, "0.0")
+    field(VAL, "10.0")
 }
 record(bo, "$(P)Control:PoseYawTweakFwd")
 {
