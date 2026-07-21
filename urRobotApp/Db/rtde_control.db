@@ -664,6 +664,42 @@ record(sseq, "$(P)Control:DisableJog")
     field(DO2,  "0")
 }
 
+# ---- Tool step fanout ----
+record(ao, "$(P)Control:PoseTweakVal") {
+    field(DESC, "Master tweak step for all pose axes")
+    field(VAL,  "10")
+    field(PINI, "YES")
+    field(FLNK, "$(P)Control:PoseStepFanout")
+}
+record(dfanout, "$(P)Control:PoseStepFanout") {
+    field(DOL,  "$(P)Control:PoseTweakVal")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P)Control:PoseXTweakVal PP")
+    field(OUTB, "$(P)Control:PoseYTweakVal PP")
+    field(OUTC, "$(P)Control:PoseZTweakVal PP")
+    field(OUTD, "$(P)Control:PoseRXTweakVal PP")
+    field(OUTE, "$(P)Control:PoseRYTweakVal PP")
+    field(OUTF, "$(P)Control:PoseRZTweakVal PP")
+}
+
+# ---- Joint step fanout ----
+record(ao, "$(P)Control:JointTweakVal") {
+    field(DESC, "Master tweak step for all joints")
+    field(VAL,  "5")
+    field(PINI, "YES")
+    field(FLNK, "$(P)Control:JointStepFanout")
+}
+record(dfanout, "$(P)Control:JointStepFanout") {
+    field(DOL,  "$(P)Control:JointTweakVal")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P)Control:J1TweakVal PP")
+    field(OUTB, "$(P)Control:J2TweakVal PP")
+    field(OUTC, "$(P)Control:J3TweakVal PP")
+    field(OUTD, "$(P)Control:J4TweakVal PP")
+    field(OUTE, "$(P)Control:J5TweakVal PP")
+    field(OUTF, "$(P)Control:J6TweakVal PP")
+}
+
 record(calcout, "$(P)Control:auto_moveL_calc")
 {
     field(INPA, "$(P)Control:AutoMoveL")
