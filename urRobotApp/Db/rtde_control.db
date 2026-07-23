@@ -638,9 +638,9 @@ record(bo, "$(P)Control:AutoMoveL")
     field(VAL, 0)
 }
 
-record(sseq, "$(P)Control:EnableJog")
+record(sseq, "$(P)Control:EnableTweak")
 {
-    field(DESC, "Sync cmds, then arm jog after delay")
+    field(DESC, "Sync cmds, then arm tweak after delay")
 
     field(LNK1, "$(P)Control:sync_both_cmd.PROC CA")
     field(DO1,  "1")
@@ -653,9 +653,9 @@ record(sseq, "$(P)Control:EnableJog")
     field(DO3,  "1")
 }
 
-record(sseq, "$(P)Control:DisableJog")
+record(sseq, "$(P)Control:DisableTweak")
 {
-    field(DESC, "Disarm jog motion")
+    field(DESC, "Disarm tweak motion")
 
     field(LNK1, "$(P)Control:AutoMoveL PP")
     field(DO1,  "0")
