@@ -244,6 +244,9 @@ RTDEControl::RTDEControl(const char* asyn_port_name, const char* dash_drv_name, 
 
 void RTDEControl::poll() {
     int run_action_val = 0;
+    using namespace std::chrono_literals;
+    constexpr auto reconnect_interval = 2s;
+    auto last_reconnect_attempt = std::chrono::steady_clock::now() - reconnect_interval;
 
     while (true) {
         lock();
@@ -313,6 +316,12 @@ void RTDEControl::poll() {
 
         } else {
             setIntegerParam(isConnectedIndex_, 0);
+
+            auto now = std::chrono::steady_clock::now();
+            if (now - last_reconnect_attempt >= reconnect_interval) {
+                last_reconnect_attempt = now;
+                try_connect();
+            }
         }
 
         callParamCallbacks();

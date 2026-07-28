@@ -29,6 +29,17 @@ record(calcout, "$(P)Control:dash_trig_disconnect")
     field(OUT, "$(P)Control:Disconnect.PROC")
 }
 
+record(calcout, "$(P)Control:dash_trig_reconnect")
+{
+    field(DESC, "Auto-reconnects RTDE control when pendant returns to remote")
+    field(INPA, "$(P)Dashboard:IsInRemoteControl.RVAL CP")
+    field(CALC, "A")
+    field(OOPT, "Transition To Non-zero")
+    field(DOPT, "Use OCAL")
+    field(OCAL, "1")
+    field(OUT, "$(P)Control:Reconnect.PROC")
+}
+
 record(bo, "$(P)Control:Disconnect")
 {
     field(DESC, "Disconnects from the RTDE interface")
