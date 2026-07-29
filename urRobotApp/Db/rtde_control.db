@@ -1030,6 +1030,14 @@ record(calcout, "$(P)Control:PoseYawTweakCalcRev")
     field(OUT, "$(P)Control:PoseYawCmd PP")
 }
 
+record(calcout, "$(P)Control:tcp_offset_resync")
+{
+    field(DESC, "Resync pose cmds once TCP offset settles")
+    field(CALC, "1")
+    field(ODLY, 0.3)
+    field(OUT, "$(P)Control:sync_pose_cmd.PROC")
+}
+
 record(ao, "$(P)Control:TCPOffset_X")
 {
     field(DESC, "X TCP offset")
@@ -1038,7 +1046,7 @@ record(ao, "$(P)Control:TCPOffset_X")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 record(ao, "$(P)Control:TCPOffset_Y")
 {
@@ -1048,7 +1056,7 @@ record(ao, "$(P)Control:TCPOffset_Y")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 record(ao, "$(P)Control:TCPOffset_Z")
 {
@@ -1058,7 +1066,7 @@ record(ao, "$(P)Control:TCPOffset_Z")
     field(EGU, "mm")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 record(ao, "$(P)Control:TCPOffset_Roll")
 {
@@ -1068,7 +1076,7 @@ record(ao, "$(P)Control:TCPOffset_Roll")
     field(EGU, "rad")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 record(ao, "$(P)Control:TCPOffset_Pitch")
 {
@@ -1078,7 +1086,7 @@ record(ao, "$(P)Control:TCPOffset_Pitch")
     field(EGU, "rad")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 record(ao, "$(P)Control:TCPOffset_Yaw")
 {
@@ -1088,7 +1096,7 @@ record(ao, "$(P)Control:TCPOffset_Yaw")
     field(EGU, "rad")
     field(PINI, 1)
     field(PREC, 4)
-    field(FLNK, "$(P)Control:sync_pose_cmd.PROC")
+    field(FLNK, "$(P)Control:tcp_offset_resync.PROC")
 }
 
 #======================
