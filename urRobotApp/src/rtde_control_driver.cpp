@@ -361,8 +361,8 @@ asynStatus RTDEControl::writeFloat64(asynUser* pasynUser, epicsFloat64 value) {
     }
 
     else if (function == tcpOffsetIndex_) {
-        // convert commanded x,y,z from mm to meters. Assume roll, pitch, yaw is radians
-        const double val = (addr >= 3) ? value : (value / 1000.0);
+        // convert commanded x,y,z from mm to meters, roll,pitch,yaw from degrees to radians
+        const double val = (addr >= 3) ? (value * M_PI / 180.0) : (value / 1000.0);
         this->tcp_offset_.at(addr) = val;
         spdlog::debug("Setting TCP offset to [{:.4f}] m,rad", fmt::join(tcp_offset_, ","));
         rtde_control_->setTcp(this->tcp_offset_);
